@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday ❤️</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background-color: #ffe5ec; font-family: sans-serif; text-align: center;">
 
-  <div class="card">
-    <h1>🎂 Happy Birthday My Love ❤️</h1>
-    <h2>To My Beautiful Wife</h2>
+    <div id="lock-screen" style="margin-top: 100px; padding: 20px;">
+        <h2 style="color: #ff4d6d;">🔐 Surprise Locked!</h2>
+        <p>Enter Password for Kashish:</p>
+        <input type="password" id="passCode" placeholder="Password..." style="padding: 12px; border: 2px solid #ff4d6d; border-radius: 10px;">
+        <br><br>
+        <button onclick="unlock()" style="padding: 12px 25px; background: #ff4d6d; color: white; border: none; border-radius: 20px; font-weight: bold;">Unlock ❤️</button>
+        <p id="wrong-msg" style="color: red; display: none; margin-top: 15px;">Oops! Wrong password. Try again!</p>
+    </div>
 
-    <p class="message">
-      Tum meri zindagi ki sabse khoobsurat gift ho 💖  
-      Har din tumhare saath special lagta hai.  
-      Aaj tumhara din hai, aur main bas itna kehna chahta hoon  
-      <b>I Love You Forever ❤️</b>
-    </p>
+    <div id="main-content" style="display: none; padding: 20px;">
+        <h1 style="color: #ff4d6d;">🎂 Happy Birthday, Kashish! ❤️</h1>
+        <p>You are my world!</p>
+        <div style="margin-top: 30px;">
+            <button onclick="window.location.href='gallery.html'" style="padding: 15px; background: white; border: 2px solid #ff4d6d; border-radius: 10px;">Go to Gallery 📸</button>
+        </div>
+    </div>
 
-    <p class="from">— Tumhara ❤️</p>
-  </div>
-
+    <script>
+        function unlock() {
+            var input = document.getElementById("passCode").value;
+            // Password: RK Kashish
+            if (input.toLowerCase() === "rk kashish") {
+                document.getElementById("lock-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+                document.body.style.backgroundColor = "#fff0f3";
+            } else {
+                document.getElementById("wrong-msg").style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
