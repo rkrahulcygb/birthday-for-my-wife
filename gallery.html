@@ -7,38 +7,90 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-        body { background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%); min-height: 100vh; overflow-x: hidden; }
-        .header { text-align: center; padding: 40px 20px; }
-        .header h1 { font-family: 'Pacifico', cursive; color: #ff4d6d; font-size: 2.8rem; text-shadow: 2px 2px white; }
-        .gallery-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 20px; }
-        .memory-card { background: white; padding: 10px 10px 30px 10px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 280px; transition: 0.3s; }
-        .memory-card img { width: 100%; height: 250px; object-fit: cover; border: 1px solid #eee; border-radius: 3px; }
-        .caption { font-family: 'Pacifico', cursive; color: #ff4d6d; text-align: center; margin-top: 10px; font-size: 1.1rem; }
-        .nav-buttons { text-align: center; margin: 40px 0; }
-        .btn { padding: 12px 25px; background: #ff4d6d; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; margin: 5px; display: inline-block; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); }
+
+        body {
+            background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .header { padding: 40px 20px; }
+        .header h1 { 
+            font-family: 'Pacifico', cursive; 
+            color: #ff4d6d; 
+            font-size: 2.8rem; 
+            text-shadow: 2px 2px white; 
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 10px 10px 35px 10px;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+            max-width: 280px;
+            position: relative;
+            transform: rotate(-2deg); /* Polaroid look */
+        }
+
+        .memory-card:nth-child(even) { transform: rotate(2deg); }
+
+        .memory-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+
+        .caption {
+            font-family: 'Pacifico', cursive;
+            color: #ff4d6d;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .nav-buttons { margin: 50px 0; }
+        .btn {
+            padding: 12px 30px;
+            background: #ff4d6d;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>Our Memories ❤️</h1>
-        <p>Kashish, ye 10 photos hamare pyaar ki kahani hain...</p>
+        <h1>Our Memory Lane ❤️</h1>
+        <p>Kashish, humari har ek photo ek pyaari kahani hai...</p>
     </div>
 
-    <div class="gallery-container" id="gallery">
-        <script>
-            // Ye script apne aap 10 photo cards bana degi
-            const gallery = document.getElementById('gallery');
-            for(let i=1; i<=10; i++) {
-                gallery.innerHTML += `
-                    <div class="memory-card">
-                        <img src="Photo${i}.jpg" alt="Memory ${i}">
-                        <p class="caption">Memory #${i}</p>
-                    </div>
-                `;
-            }
-        </script>
+    <div class="gallery-container">
+        <div class="memory-card"><img src="Photo1.jpg"><p class="caption">Memory #1</p></div>
+        <div class="memory-card"><img src="Photo2.jpg"><p class="caption">Memory #2</p></div>
+        <div class="memory-card"><img src="Photo3.jpg"><p class="caption">Memory #3</p></div>
+        <div class="memory-card"><img src="Photo4.jpg"><p class="caption">Memory #4</p></div>
+        <div class="memory-card"><img src="Photo5.jpg"><p class="caption">Memory #5</p></div>
+        <div class="memory-card"><img src="Photo6.jpg"><p class="caption">Memory #6</p></div>
+        <div class="memory-card"><img src="Photo7.jpg"><p class="caption">Memory #7</p></div>
+        <div class="memory-card"><img src="Photo8.jpg"><p class="caption">Memory #8</p></div>
+        <div class="memory-card"><img src="Photo9.jpg"><p class="caption">Memory #9</p></div>
+        <div class="memory-card"><img src="Photo10.jpg"><p class="caption">Memory #10</p></div>
     </div>
 
     <div class="nav-buttons">
@@ -47,8 +99,13 @@
     </div>
 
     <script>
+        // Cards load hote waqt animation
         gsap.from(".memory-card", {
-            duration: 1, y: 50, opacity: 0, stagger: 0.2, ease: "power2.out"
+            duration: 1.2,
+            y: 60,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power3.out"
         });
     </script>
 </body>
