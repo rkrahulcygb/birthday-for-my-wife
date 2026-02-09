@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Lane - Birthday Memories</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
+
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+      body {
+        background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
+        min-height: 100vh; overflow-x: hidden;
+      }
+
+      .header { text-align: center; padding: 50px 20px; }
+      .header h1 { font-family: 'Pacifico', cursive; color: #ff4d6d; font-size: 3rem; text-shadow: 2px 2px white; }
+
+      .gallery-container {
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 20px;
+      }
+
+      .memory-card {
+        background: white; padding: 15px 15px 40px 15px; border-radius: 5px;
+        box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+        transform: rotate(random(-5deg, 5deg)); transition: all 0.3s;
+        max-width: 300px; position: relative;
+      }
+
+      .memory-card img { width: 100%; height: 250px; object-fit: cover; border: 1px solid #ddd; }
+
+      .caption {
+        font-family: 'Pacifico', cursive; color: #ff4d6d; text-align: center; margin-top: 15px; font-size: 1.2rem;
+      }
+
+      .back-home {
+        display: block; width: 200px; margin: 30px auto; padding: 15px;
+        background: #ff4d6d; color: white; text-align: center;
+        text-decoration: none; border-radius: 50px; font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Our Memory Lane ❤️</h1>
+      <p>Kashish, har ek pal jo tumhare saath bitaya hai, wo mere liye yaadgaar hai.</p>
+    </div>
+
+    <div class="gallery-container">
+      <div class="memory-card">
+        <img src="photo1.jpg" alt="Memory 1">
+        <p class="caption">The First Date</p>
+      </div>
+
+      <div class="memory-card">
+        <img src="photo2.jpg" alt="Memory 2">
+        <p class="caption">That Beautiful Smile</p>
+      </div>
+
+      <div class="memory-card">
+        <img src="photo3.jpg" alt="Memory 3">
+        <p class="caption">Our Sweetest Moment</p>
+      </div>
+
+      </div>
+
+    <a href="index.html" class="back-home">Back to Home</a>
+
+    <script>
+      // Page load hone par cards thode move honge
+      gsap.from(".memory-card", {
+        duration: 1.5,
+        y: 100,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power4.out"
+      });
+    </script>
+  </body>
+</html>
+
