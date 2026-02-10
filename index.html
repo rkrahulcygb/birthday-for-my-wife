@@ -3,28 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise - Welcome</title>
+    <title>Birthday Surprise for Kashish Ji</title>
     <style>
-        body { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Comic Sans MS', cursive; margin: 0; }
-        .box { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 85%; max-width: 350px; }
-        h2 { color: #ff3366; }
-        input { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ffcce6; border-radius: 10px; box-sizing: border-box; }
-        button { background: #ff3366; color: white; border: none; padding: 12px; border-radius: 25px; cursor: pointer; width: 100%; font-weight: bold; }
+        /* Music Button Styling 🎵 */
+        #musicToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        /* Aapka purana CSS yahan aayega (Cake, Balloons etc.) */
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Kashish, Enter Password ❤️</h2>
-        <input type="password" id="pass" placeholder="Password yahan likho...">
-        <button onclick="login()">Unlock Surprise ✨</button>
-    </div>
+
+    <button id="musicToggle" onclick="toggleMusic()">🎵 Play Music</button>
+
+    <audio id="bgMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        function login() {
-            const p = document.getElementById('pass').value;
-            if (p === "RK Kashish") {
-                window.location.href = "wish.html"; // Agla page wish.html hai
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicToggle");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸️ Pause Music";
             } else {
-                alert("Wrong Password! Hint: RK Kashish");
+                music.pause();
+                btn.innerHTML = "🎵 Play Music";
             }
         }
     </script>
