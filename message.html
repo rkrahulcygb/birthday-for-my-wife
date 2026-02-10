@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message for Kashish</title>
+    <title>Special Message for Kashish</title>
     <style>
-        body { background-color: #ffe5ec; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Georgia', serif; overflow: hidden; }
+        body { background-color: #ffe5ec; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: 'Georgia', serif; }
+        
+        /* Bada Message Box ✉️ */
+        .message-card { 
+            background: white; 
+            width: 90%; 
+            max-width: 600px; 
+            padding: 50px 40px; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            text-align: center; 
+            border: 3px solid #ffb3c1; 
+            position: relative; 
+        }
 
-        /* Envelope Container ✉️ */
-        .envelope-wrapper { position: relative; cursor: pointer; transition: 0.5s; }
-        .envelope { position: relative; width: 300px; height: 200px; background: #ff4d6d; border-radius: 0 0 10px 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .envelope::before { content: ""; position: absolute; top: 0; z-index: 2; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff1a4d; transform-origin: top; transition: all 0.5s ease-in-out; }
+        .message-card::before { content: "💌"; font-size: 60px; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); background: #ffe5ec; padding: 0 15px; }
 
-        /* The Letter inside 📜 */
-        .letter { position: absolute; bottom: 0; left: 10px; width: 280px; height: 180px; background: #fff9f0; padding: 20px; box-sizing: border-box; transition: 0.5s; z-index: 1; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow-y: auto; }
-        .letter-text { font-size: 16px; color: #333; line-height: 1.5; text-align: center; }
+        h2 { color: #ff4d6d; margin-bottom: 25px; font-size: 30px; }
+        p { line-height: 1.8; color: #333; font-size: 20px; margin-bottom: 40px; text-align: left; }
+        
+        /* Badi Gold Ring Button 💍 */
+        .ring-button {
+            background: linear-gradient(145deg, #ffd700, #daa520);
+            color: #5c3000;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.5);
+            border: 4px solid #ffef80;
+            transition: transform 0.3s ease;
+            line-height: 1.4;
+        }
 
-        /* Animation when opened */
-        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
-        .envelope-wrapper.open .letter { transform: translateY(-120px); height: 380px; z-index: 2; }
-
-        .btn-video { display: none; margin-top: 20px; padding: 10px 20px; background: #ff4d6d; color: white; border: none; border-radius: 20px; cursor: pointer; font-family: Arial; }
+        .ring-button:hover { transform: scale(1.1) rotate(5deg); }
     </style>
 </head>
 <body>
 
-    <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
-        <div class="envelope">
-            <div class="letter">
-                <div class="letter-text">
-                    Happy birthday meri jaan pyari Kashish Ji! 🎂<br><br>
-                    Main tumse bahut zyada pyar karta hoon. Main hamesha tumhare saath rahunga puri life, kabhi tumhara saath nahi chhodunga. Main aakhri saans tak tumhare saath rahunga.<br><br>
-                    <strong>Mera tumse vada hai ki main hamesha tumhara khayal rakhunga aur tumhe kabhi rone nahi dunga. 🤝❤️</strong><br><br>
-                    I Love You meri pyari kashish ji. ❤️<br>
-                    <button class="btn-video" id="videoBtn" onclick="window.location.href='video.html'">Final Surprise 🎬</button>
-                </div>
+    <div class="message-card">
+        <h2>Meri Pyari Kashish ke liye... ❤️</h2>
+        <p>
+            "Tum meri zindagi ki sabse badi khushi ho. Ye birthday toh bas ek bahana hai tumhein ye batane ka ki main tumse kitna pyaar karta hoon. Tumhare saath har pal, har din ek nayi khushi deta hai. Main hamesha tumhare saath rahunga... Tum meri duniya ho, meri roshni ho."
+            <br><br>
+            <b>I love you meri pyari patni ji ❤️</b>
+        </p>
+
+        <div class="ring-button" onclick="goToVideo()">
+            <div>
+                Hamari Shadi<br>bahut jaldi hogi!<br>💍
             </div>
         </div>
     </div>
@@ -45,17 +70,25 @@
 
     <script>
         const music = document.getElementById("bgMusic");
+
+        // Music ko resume karne ka logic
         window.onload = () => {
+            const savedTime = localStorage.getItem('musicTime');
+            if (savedTime) { music.currentTime = parseFloat(savedTime); }
             if (localStorage.getItem('isMusicPlaying') === 'true') {
-                music.play().catch(e => console.log("Music play error"));
+                music.play().catch(e => console.log("Tap to play"));
             }
         };
 
-        function openLetter() {
-            document.getElementById('envelope').classList.add('open');
-            setTimeout(() => {
-                document.getElementById('videoBtn').style.display = 'inline-block';
-            }, 600);
+        // Time save karte rehna
+        setInterval(() => {
+            if (!music.paused) { localStorage.setItem('musicTime', music.currentTime); }
+        }, 1000);
+
+        // Video page par bhejte waqt music band karna
+        function goToVideo() {
+            localStorage.setItem('isMusicPlaying', 'false'); 
+            window.location.href = "video.html"; 
         }
     </script>
 </body>
