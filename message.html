@@ -3,63 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mere Dil Ki Baat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Message for Kashish</title>
     <style>
-        body { background-color: #ffe5ec; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: 'Great Vibes', cursive; }
-        .heart-wrapper { cursor: pointer; animation: float 2s infinite ease-in-out; z-index: 10; text-align: center; position: relative; }
-        .heart { background-color: #ff0000; display: inline-block; height: 100px; position: relative; transform: rotate(-45deg); width: 100px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-        .heart:before, .heart:after { background-color: #ff0000; border-radius: 50%; content: ""; height: 100px; position: absolute; width: 100px; }
-        .heart:before { top: -50px; left: 0; }
-        .heart:after { left: 50px; top: 0; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .letter-container { display: none; background: #fff9f0; width: 85%; max-width: 600px; padding: 30px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center; border: 2px solid #f3e5ab; max-height: 85vh; overflow-y: auto; }
-        .letter-text { font-size: 26px; color: #333; line-height: 1.4; white-space: pre-wrap; margin-bottom: 20px; }
-        .video-btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background-color: #ff4d6d; color: white; border: none; font-size: 20px; border-radius: 30px; font-weight: bold; font-family: Arial; cursor: pointer; text-decoration: none; }
-        .open-animation { display: block !important; animation: fadeIn 1.5s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        body { background-color: #ffe5ec; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Georgia', serif; overflow: hidden; }
+
+        /* Envelope Container ✉️ */
+        .envelope-wrapper { position: relative; cursor: pointer; transition: 0.5s; }
+        .envelope { position: relative; width: 300px; height: 200px; background: #ff4d6d; border-radius: 0 0 10px 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .envelope::before { content: ""; position: absolute; top: 0; z-index: 2; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff1a4d; transform-origin: top; transition: all 0.5s ease-in-out; }
+
+        /* The Letter inside 📜 */
+        .letter { position: absolute; bottom: 0; left: 10px; width: 280px; height: 180px; background: #fff9f0; padding: 20px; box-sizing: border-box; transition: 0.5s; z-index: 1; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow-y: auto; }
+        .letter-text { font-size: 16px; color: #333; line-height: 1.5; text-align: center; }
+
+        /* Animation when opened */
+        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+        .envelope-wrapper.open .letter { transform: translateY(-120px); height: 380px; z-index: 2; }
+
+        .btn-video { display: none; margin-top: 20px; padding: 10px 20px; background: #ff4d6d; color: white; border: none; border-radius: 20px; cursor: pointer; font-family: Arial; }
     </style>
 </head>
 <body>
+
+    <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
+        <div class="envelope">
+            <div class="letter">
+                <div class="letter-text">
+                    Happy birthday meri jaan pyari Kashish Ji! 🎂<br><br>
+                    Main tumse bahut zyada pyar karta hoon. Main hamesha tumhare saath rahunga puri life, kabhi tumhara saath nahi chhodunga. Main aakhri saans tak tumhare saath rahunga.<br><br>
+                    <strong>Mera tumse vada hai ki main hamesha tumhara khayal rakhunga aur tumhe kabhi rone nahi dunga. 🤝❤️</strong><br><br>
+                    I Love You meri pyari kashish ji. ❤️<br>
+                    <button class="btn-video" id="videoBtn" onclick="window.location.href='video.html'">Final Surprise 🎬</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <audio id="bgMusic" loop>
         <source src="background.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="heart-wrapper" id="heartBtn" onclick="openLetter()">
-        <div class="heart"></div>
-        <p style="font-family: Arial; font-weight: bold; color: white; position: absolute; top: 35px; left: 15px; transform: rotate(45deg); margin: 0;">Open Me</p>
-    </div>
-
-    <div class="letter-container" id="myLetter">
-        <div class="letter-text">
-Happy birthday meri jaan pyari Kashish Ji! 🎂 
-
-Main tumse bahut zyada pyar karta hoon. Main hamesha tumhare saath rahunga puri life, kabhi tumhara saath nahi chhodunga. Main aakhri saans tak tumhare saath rahunga, puri life kabhi akele nahi chhodunga. Jab tak main tumhare saath hoon, tumhe kuch nahi hone dunga. Hum hamesha Happy rahenge.
-
-I Love You. ❤️
-        </div>
-        <button onclick="goToVideo()" class="video-btn">Let's Party! 🎉</button>
-    </div>
-
     <script>
         const music = document.getElementById("bgMusic");
-
-        // Page load hote hi music resume karega
-        window.onload = function() {
+        window.onload = () => {
             if (localStorage.getItem('isMusicPlaying') === 'true') {
-                music.play().catch(e => console.log("Click to play"));
+                music.play().catch(e => console.log("Music play error"));
             }
         };
 
         function openLetter() {
-            music.play();
-            document.getElementById('heartBtn').style.display = 'none';
-            document.getElementById('myLetter').classList.add('open-animation');
-        }
-
-        function goToVideo() {
-            window.location.href = "video.html";
+            document.getElementById('envelope').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('videoBtn').style.display = 'inline-block';
+            }, 600);
         }
     </script>
 </body>
