@@ -3,46 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise for Kashish Ji</title>
+    <title>Birthday Surprise | Step 1</title>
     <style>
-        /* Music Button Styling 🎵 */
-        #musicToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #ff4d6d;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        /* Basic Styling */
+        body { background-color: #ffe5ec; text-align: center; font-family: Arial, sans-serif; overflow: hidden; }
+        .container { margin-top: 100px; }
+        .start-btn { 
+            padding: 20px 40px; font-size: 24px; cursor: pointer; 
+            background-color: #ff4d6d; color: white; border: none; 
+            border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        /* Aapka purana CSS yahan aayega (Cake, Balloons etc.) */
+        /* Cake/Decorations ke liye purana CSS yahan rahega */
     </style>
 </head>
 <body>
 
-    <button id="musicToggle" onclick="toggleMusic()">🎵 Play Music</button>
+    <div class="container">
+        <h1>Hey Kashish Ji! ✨</h1>
+        <p>Aapke liye ek chota sa surprise hai...</p>
+        
+        <button class="start-btn" onclick="startEverything()">Start Surprise 🎁</button>
+    </div>
 
     <audio id="bgMusic" loop>
         <source src="background.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        const music = document.getElementById("bgMusic");
-        const btn = document.getElementById("musicToggle");
+        function startEverything() {
+            const music = document.getElementById("bgMusic");
+            
+            // 1. Music play karo
+            music.play();
 
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                btn.innerHTML = "⏸️ Pause Music";
-            } else {
-                music.pause();
-                btn.innerHTML = "🎵 Play Music";
-            }
+            // 2. Browser ki memory mein save karo ki music "ON" hai
+            localStorage.setItem('isMusicPlaying', 'true');
+
+            // 3. Agle page par bhejo (message.html)
+            // Thoda delay taaki music shuru hone ka ehsas ho
+            setTimeout(function() {
+                window.location.href = "message.html";
+            }, 1000); 
         }
     </script>
 </body>
