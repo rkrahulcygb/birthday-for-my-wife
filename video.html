@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Surprise Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe5ec;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 600px;
+            border: 5px solid #ff4d6d;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: black;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .special-message {
+            font-size: 35px;
+            color: #ff4d6d;
+            margin-top: 30px;
+            padding: 0 20px;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <video controls autoplay>
+            <source src="surprise.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="special-message">
+        I love you meri pyari Kashish ji ❤️
+    </div>
+
+</body>
+</html>
+
