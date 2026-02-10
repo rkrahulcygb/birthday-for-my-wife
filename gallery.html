@@ -6,7 +6,7 @@
     <title>Beautiful: Hamari Yaadein</title>
     <style>
         body {
-            background-color: #ffe5ec; /* Light Pink Background */
+            background-color: #ffe5ec; /* Pink Background */
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -18,103 +18,108 @@
 
         h1 {
             color: #ff4d6d;
-            margin-top: 30px;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 20px 0;
             z-index: 10;
         }
 
-        /* Balloon Animation */
+        /* Full Screen Gallery Container */
+        .gallery-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 70vh; /* Photos ki unchai */
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 85%;
+            object-fit: contain; /* Photo puri dikhegi */
+        }
+
+        /* Buttons Styling */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 77, 109, 0.7);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            z-index: 20;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Floating Balloons Animation */
         .balloon {
             position: absolute;
             bottom: -100px;
-            width: 50px;
-            height: 70px;
-            background: #ff758f;
+            width: 40px;
+            height: 60px;
+            background: #ff8fa3;
             border-radius: 50%;
-            opacity: 0.7;
-            animation: float 10s infinite linear;
+            animation: float 8s infinite linear;
             z-index: 1;
         }
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
-        }
-
-        /* Gallery Container */
-        .gallery-container {
-            width: 90%;
-            max-width: 400px;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-            border: 8px solid white;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            background: white;
-            z-index: 5;
-        }
-
-        .slides-wrapper {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .memory-card {
-            min-width: 100%;
-            text-align: center;
-        }
-
-        .memory-card img {
-            width: 100%;
-            display: block;
-        }
-
-        .caption {
-            padding: 15px;
-            color: #ff4d6d;
-            font-weight: bold;
-            font-size: 1.2rem;
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-120vh); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="balloon" style="left: 10%; animation-delay: 0s; background: #ff8fa3;"></div>
-    <div class="balloon" style="left: 30%; animation-delay: 2s; background: #ffb3c1;"></div>
-    <div class="balloon" style="left: 50%; animation-delay: 4s; background: #ff4d6d;"></div>
-    <div class="balloon" style="left: 70%; animation-delay: 1s; background: #ff758f;"></div>
-    <div class="balloon" style="left: 90%; animation-delay: 5s; background: #c9184a;"></div>
+    <div class="balloon" style="left: 15%; animation-delay: 0s;"></div>
+    <div class="balloon" style="left: 45%; animation-delay: 2s; background: #ff4d6d;"></div>
+    <div class="balloon" style="left: 75%; animation-delay: 4s;"></div>
 
     <h1>Beautiful: Hamari Yaadein ❤️</h1>
 
-    <div class="gallery-container">
-        <div class="slides-wrapper" id="auto-slides">
-            <div class="memory-card"><img src="Photo1.jpg"><p class="caption">Yaad 1 ✨</p></div>
-            <div class="memory-card"><img src="Photo2.jpg"><p class="caption">Yaad 2 🌹</p></div>
-            <div class="memory-card"><img src="Photo3.jpg"><p class="caption">Yaad 3 💖</p></div>
-            <div class="memory-card"><img src="Photo4.jpg"><p class="caption">Yaad 4 🔒</p></div>
-            <div class="memory-card"><img src="Photo5.jpg"><p class="caption">Yaad 5 🌸</p></div>
-            <div class="memory-card"><img src="Photo6.jpg"><p class="caption">Yaad 6 🌟</p></div>
-            <div class="memory-card"><img src="Photo7.jpg"><p class="caption">Yaad 7 🎈</p></div>
-            <div class="memory-card"><img src="Photo8.jpg"><p class="caption">Yaad 8 💎</p></div>
-            <div class="memory-card"><img src="Photo9.jpg"><p class="caption">Yaad 9 ❤️</p></div>
-            <div class="memory-card"><img src="Photo10.jpg"><p class="caption">Hamari Best Memory! 👑</p></div>
+    <div class="gallery-wrapper">
+        <button class="btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="btn next" onclick="changeSlide(1)">❯</button>
+        
+        <div class="slides" id="image-slider">
+            <div class="slide"><img src="Photo1.jpg"><p>Yaad 1 ✨</p></div>
+            <div class="slide"><img src="Photo2.jpg"><p>Yaad 2 🌹</p></div>
+            <div class="slide"><img src="Photo3.jpg"><p>Yaad 3 💖</p></div>
+            <div class="slide"><img src="Photo4.jpg"><p>Yaad 4 🔒</p></div>
+            <div class="slide"><img src="Photo5.jpg"><p>Yaad 5 🌸</p></div>
+            <div class="slide"><img src="Photo6.jpg"><p>Yaad 6 🌟</p></div>
+            <div class="slide"><img src="Photo7.jpg"><p>Yaad 7 🎈</p></div>
+            <div class="slide"><img src="Photo8.jpg"><p>Yaad 8 💎</p></div>
+            <div class="slide"><img src="Photo9.jpg"><p>Yaad 9 ❤️</p></div>
+            <div class="slide"><img src="Photo10.jpg"><p>Hamari Best Memory! 👑</p></div>
         </div>
     </div>
 
     <script>
-        let currentIndex = 0;
-        const slides = document.getElementById('auto-slides');
-        const totalSlides = 10;
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        let index = 0;
+        function changeSlide(n) {
+            const slides = document.getElementById('image-slider');
+            index = (index + n + 10) % 10; // 10 photos ke liye loop
+            slides.style.transform = `translateX(-${index * 100}vw)`;
         }
-
-        // Har 3 second mein auto change
-        setInterval(nextSlide, 3000);
     </script>
 
 </body>
