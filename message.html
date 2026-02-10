@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mere Dil Ki Baat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe5ec;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .heart-wrapper {
+            cursor: pointer;
+            animation: float 2s infinite ease-in-out;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .heart {
+            background-color: #ff0000;
+            display: inline-block;
+            height: 100px;
+            position: relative;
+            transform: rotate(-45deg);
+            width: 100px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .heart:before, .heart:after {
+            background-color: #ff0000;
+            border-radius: 50%;
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 100px;
+        }
+
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { left: 50px; top: 0; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .letter-container {
+            display: none;
+            background: #fff9f0;
+            width: 85%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 2px solid #f3e5ab;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .letter-text {
+            font-size: 24px;
+            color: #333;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .open-animation {
+            display: block !important;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-wrapper" id="heartBtn" onclick="openLetter()">
+        <div class="heart"></div>
+        <p style="font-family: Arial; font-weight: bold; color: white; position: absolute; top: 35px; left: 15px; transform: rotate(45deg);">Open Me</p>
+    </div>
+
+    <div class="letter-container" id="myLetter">
+        <div class="letter-text">
+Happy birthday meri jaan pyari Kashish Ji! 🎂 
+
+Main tumse bahut zyada pyar karta hoon. Main hamesha tumhare saath rahunga puri life, kabhi tumhara saath nahi chhodunga. Main aakhri saans tak tumhare saath rahunga, puri life kabhi akele nahi chhodunga. Jab tak main tumhare saath hoon, tumhe kuch nahi hone dunga. Hum hamesha Happy rahenge.
+
+I promise to stay by your side for the rest of my life. I will never leave you, and I will be with you until my very last breath. As long as I am here, I will protect you and ensure that nothing ever happens to you. We will always be happy together, and I vow to never let you feel alone. 
+
+I Love You. ❤️
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('heartBtn').style.display = 'none';
+            document.getElementById('myLetter').classList.add('open-animation');
+        }
+    </script>
+
+</body>
+</html>
+
