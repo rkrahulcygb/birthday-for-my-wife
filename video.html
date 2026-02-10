@@ -3,93 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Surprise Video</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Surprise Video | Step 3</title>
     <style>
-        body {
-            background-color: #ffe5ec;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-family: 'Great Vibes', cursive;
-            text-align: center;
-        }
-
-        .video-container {
-            width: 90%;
-            max-width: 600px;
-            border: 5px solid #ff4d6d;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: black;
-        }
-
+        body { background-color: #ffe5ec; text-align: center; font-family: Arial, sans-serif; padding-top: 50px; }
+        .video-container { width: 90%; max-width: 800px; margin: 0 auto; border: 5px solid #ff4d6d; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         video { width: 100%; display: block; }
-
-        .special-message {
-            font-size: 35px;
-            color: #ff4d6d;
-            margin-top: 20px;
-        }
-
-        /* Home Button Styling 🏠 */
-        #homeBtn {
-            display: none; /* Pehle chhupa rahega */
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            border-radius: 30px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-        }
+        h1 { color: #ff4d6d; font-family: 'Great Vibes', cursive; font-size: 40px; }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" autoplay loop>
-        <source src="background.mp3" type="audio/mpeg">
-    </audio>
+    <h1>A Special Video For You ❤️</h1>
 
     <div class="video-container">
         <video id="myVideo" controls>
-            <source src="surprise.mp4" type="video/mp4">
+            <source src="birthday_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
     </div>
 
-    <div class="special-message">
-        I love you meri pyari Kashish ji ❤️
-    </div>
-
-    <a href="index.html" id="homeBtn">Go Back to Home 🏠</a>
+    <audio id="bgMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        const video = document.getElementById('myVideo');
-        const music = document.getElementById('bgMusic');
-        const homeBtn = document.getElementById('homeBtn');
+        const music = document.getElementById("bgMusic");
+        const video = document.getElementById("myVideo");
 
-        // Jab video play ho, music stop ho jaye 🔇
+        // 1. Page load hote hi music wahi se resume karega
+        window.onload = function() {
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
+                music.play().catch(e => console.log("Click video to sync audio"));
+            }
+        };
+
+        // 2. MAGIC: Jab video play ho, toh background music pause ho jaye 🔇
         video.onplay = function() {
             music.pause();
         };
 
-        // Jab video pause ho, music firse chale (optional) 🔊
+        // 3. Jab video pause ho ya khatam ho, toh music phir se shuru ho jaye (Optional) 🎶
         video.onpause = function() {
             music.play();
         };
-
-        // Jab video KHATAM ho, button dikhaye 🏁
-        video.onended = function() {
-            homeBtn.style.display = "inline-block";
-            music.play(); // Video khatam hone par music firse start
-        };
     </script>
-
 </body>
 </html>
