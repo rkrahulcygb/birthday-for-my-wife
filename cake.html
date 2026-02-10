@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Cutting - Kashish</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial Rounded MT Bold', sans-serif; }
+        body { background: linear-gradient(135deg, #ffcce6, #c4e0ff); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
+
+        .cake-area { position: relative; cursor: pointer; transition: 0.3s; }
+        .cake-emoji { font-size: 120px; line-height: 1; display: block; }
+        
+        .candle { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 40px; transition: 0.5s; }
+        .blown { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+
+        h1 { color: #ff3366; margin-bottom: 20px; font-size: 24px; padding: 0 10px; }
+        
+        .wish-box { margin-top: 30px; display: none; animation: fadeIn 1s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn-next { background: #ff3366; color: white; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); display: inline-block; }
+        
+        /* Confetti style */
+        .confetti { position: absolute; width: 10px; height: 10px; background: #ff3366; z-index: 100; }
+    </style>
+</head>
+<body>
+
+    <h1 id="instruction">Kashish, Mombatti bujhao aur Cake kaato! 🎂</h1>
+
+    <div class="cake-area" onclick="cutCake()">
+        <div class="candle" id="candle">🕯️</div>
+        <div class="cake-emoji" id="cake">🎂</div>
+    </div>
+
+    <div class="wish-box" id="wishBox">
+        <h2 style="color: #ff3366; margin-bottom: 15px;">Yaaay! Happy Birthday! 🎉</h2>
+        <a href="gallery.html" class="btn-next">Hamari Yaadein Dekho 📸</a>
+    </div>
+
+    <script>
+        function cutCake() {
+            // Candle blow animation
+            document.getElementById('candle').classList.add('blown');
+            
+            // Change cake to slice after 0.5s
+            setTimeout(() => {
+                document.getElementById('cake').innerHTML = "🍰";
+                document.getElementById('instruction').innerHTML = "Mmm... Tasty! ❤️";
+                document.getElementById('wishBox').style.display = "block";
+                createConfetti();
+                alert("Happy Birthday Meri Jaan! 🎈");
+            }, 500);
+        }
+
+        function createConfetti() {
+            for(let i=0; i<50; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-10px';
+                c.style.backgroundColor = ['#ff3366','#ffcc00','#66ccff','#99ff66'][Math.floor(Math.random()*4)];
+                c.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(c);
+                
+                const duration = Math.random() * 3 + 2;
+                c.animate([
+                    { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translateY(100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], { duration: duration * 1000, easing: 'lighter' });
+                
+                setTimeout(() => c.remove(), duration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
