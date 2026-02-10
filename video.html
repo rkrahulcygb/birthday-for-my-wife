@@ -28,32 +28,38 @@
             background: black;
         }
 
-        video {
-            width: 100%;
-            display: block;
-        }
+        video { width: 100%; display: block; }
 
         .special-message {
             font-size: 35px;
             color: #ff4d6d;
-            margin-top: 30px;
-            padding: 0 20px;
-            animation: heartBeat 1.5s infinite;
+            margin-top: 20px;
         }
 
-        @keyframes heartBeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        /* Home Button Styling 🏠 */
+        #homeBtn {
+            display: none; /* Pehle chhupa rahega */
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #ff4d6d;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 30px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
+    <audio id="bgMusic" autoplay loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="video-container">
-        <video controls autoplay>
+        <video id="myVideo" controls>
             <source src="surprise.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
 
@@ -61,6 +67,29 @@
         I love you meri pyari Kashish ji ❤️
     </div>
 
+    <a href="index.html" id="homeBtn">Go Back to Home 🏠</a>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const music = document.getElementById('bgMusic');
+        const homeBtn = document.getElementById('homeBtn');
+
+        // Jab video play ho, music stop ho jaye 🔇
+        video.onplay = function() {
+            music.pause();
+        };
+
+        // Jab video pause ho, music firse chale (optional) 🔊
+        video.onpause = function() {
+            music.play();
+        };
+
+        // Jab video KHATAM ho, button dikhaye 🏁
+        video.onended = function() {
+            homeBtn.style.display = "inline-block";
+            music.play(); // Video khatam hone par music firse start
+        };
+    </script>
+
 </body>
 </html>
-
