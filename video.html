@@ -3,48 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surprise Video | Step 3</title>
+    <title>Final Surprise for Kashish</title>
     <style>
-        body { background-color: #ffe5ec; text-align: center; font-family: Arial, sans-serif; padding-top: 50px; }
-        .video-container { width: 90%; max-width: 800px; margin: 0 auto; border: 5px solid #ff4d6d; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        body { background-color: #000; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Arial', sans-serif; }
+        
+        .video-container { width: 90%; max-width: 800px; border: 5px solid #ff4d6d; border-radius: 15px; overflow: hidden; box-shadow: 0 0 30px rgba(255, 77, 109, 0.5); }
         video { width: 100%; display: block; }
-        h1 { color: #ff4d6d; font-family: 'Great Vibes', cursive; font-size: 40px; }
+
+        .promise-box { margin-top: 30px; text-align: center; padding: 20px; animation: glow 2s infinite alternate; }
+        .promise-text { font-size: 24px; font-weight: bold; color: #ff4d6d; line-height: 1.6; }
+        
+        @keyframes glow { from { opacity: 0.8; } to { opacity: 1; text-shadow: 0 0 10px #ff4d6d; } }
+        
+        .home-btn { margin-top: 20px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <h1>A Special Video For You ❤️</h1>
-
     <div class="video-container">
-        <video id="myVideo" controls>
-            <source src="birthday_video.mp4" type="video/mp4">
+        <video id="birthdayVideo" controls autoplay>
+            <source src="surprise.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="background.mp3" type="audio/mpeg">
-    </audio>
+    <div class="promise-box">
+        <p class="promise-text">
+            "Mera aakhri vada... ❤️<br>
+            Hamesha tumhare saath rahunga.<br>
+            I love you meri pyari patni ji!" 💍
+        </p>
+        <a href="index.html" class="home-btn">Restart Celebration 🔄</a>
+    </div>
 
     <script>
-        const music = document.getElementById("bgMusic");
-        const video = document.getElementById("myVideo");
-
-        // 1. Page load hote hi music wahi se resume karega
-        window.onload = function() {
-            if (localStorage.getItem('isMusicPlaying') === 'true') {
-                music.play().catch(e => console.log("Click video to sync audio"));
-            }
-        };
-
-        // 2. MAGIC: Jab video play ho, toh background music pause ho jaye 🔇
-        video.onplay = function() {
-            music.pause();
-        };
-
-        // 3. Jab video pause ho ya khatam ho, toh music phir se shuru ho jaye (Optional) 🎶
-        video.onpause = function() {
-            music.play();
+        // Video page par purana music stop karne ke liye
+        window.onload = () => {
+            localStorage.setItem('isMusicPlaying', 'false');
         };
     </script>
 </body>
