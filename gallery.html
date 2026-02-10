@@ -1,100 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Beautiful Memories</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Lane - Birthday Memories</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #000; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            font-family: 'Comic Sans MS', cursive; 
-            color: white; 
-            overflow: hidden; 
-        }
-        
-        .slideshow-container { 
-            position: relative; 
-            width: 90%; 
-            max-width: 450px; 
-            height: 75vh; 
-            border: 8px solid #fff; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
-        }
-        
-        .mySlides { display: none; width: 100%; height: 100%; }
-        .mySlides img { width: 100%; height: 100%; object-fit: cover; }
+      @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
 
-        .caption { 
-            position: absolute; 
-            bottom: 30px; 
-            width: 100%; 
-            text-align: center; 
-            background: rgba(0, 0, 0, 0.6); 
-            padding: 15px; 
-            font-size: 20px; 
-            color: #ffdae0;
-            border-top: 2px solid #ff1493;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-        h1 { margin-bottom: 15px; color: #ff1493; font-size: 28px; text-shadow: 2px 2px 10px rgba(255,255,255,0.3); }
-        
-        /* Smooth Fade Animation */
-        .fade { animation: fadeEffect 2s; }
-        @keyframes fadeEffect { from {opacity: 0.4} to {opacity: 1} }
+      body {
+        background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .header {
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .header h1 {
+        font-family: "Pacifico", cursive;
+        color: #ff1493;
+        font-size: 3.5rem;
+        text-shadow: 3px 3px 0px rgba(255, 255, 255, 1);
+      }
+
+      .gallery-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .memory-card {
+        background: white;
+        padding: 15px 15px 40px 15px;
+        box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+        transform: rotate(var(--r));
+        transition: 0.3s;
+        width: 280px;
+        position: relative;
+      }
+
+      .memory-card:hover {
+        transform: rotate(0deg) scale(1.1);
+        z-index: 10;
+      }
+
+      .photo {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border: 1px solid #eee;
+      }
+
+      .caption {
+        font-family: "Pacifico", cursive;
+        text-align: center;
+        margin-top: 15px;
+        color: #555;
+        font-size: 1.2rem;
+      }
+
+      /* Sticker effects */
+      .sticker {
+        position: absolute;
+        font-size: 2rem;
+        z-index: 2;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Our Memory Lane ❤️</h1>
+    </div>
 
-    <h1>For My Queen ❤️</h1>
+    <div class="gallery-container">
+      <div class="memory-card" style="--r: -3deg">
+        <span class="sticker" style="top: -10px; left: -10px">📍</span>
+        <img src="photo1.jpg" class="photo" alt="Memory 1" />
+        <p class="caption">The Beginning ✨</p>
+      </div>
 
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="photo1.jpg">
-            <div class="caption">The Best Day! ✨</div>
-        </div>
+      <div class="memory-card" style="--r: 2deg">
+        <span class="sticker" style="top: -10px; right: -10px">❤️</span>
+        <img src="photo2.jpg" class="photo" alt="Memory 2" />
+        <p class="caption">Special Moment 🌹</p>
+      </div>
 
-        <div class="mySlides fade">
-            <img src="photo2.jpg">
-            <div class="caption">Always Together ❤️</div>
-        </div>
+      <div class="memory-card" style="--r: -2deg">
+        <span class="sticker" style="bottom: 20px; left: -10px">✨</span>
+        <img src="photo3.jpg" class="photo" alt="Memory 3" />
+        <p class="caption">Pure Happiness 💖</p>
+      </div>
 
-        <div class="mySlides fade">
-            <img src="photo3.jpg">
-            <div class="caption">My Happiness 💖</div>
-        </div>
+      <div class="memory-card" style="--r: 4deg">
+        <span class="sticker" style="top: 10px; left: 50%">🌟</span>
+        <img src="photo4.jpg" class="photo" alt="Memory 4" />
+        <p class="caption">Forever Us 🔒</p>
+      </div>
+    </div>
 
-        <div class="mySlides fade">
-            <img src="photo4.jpg">
-            <div class="caption">Love You Forever 🌹</div>
-        </div>
-
-        </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "block";  
-            
-            // Har 3 second baad photo badlegi
-            setTimeout(showSlides, 3000); 
-        }
+      // Simple Animation
+      gsap.from(".memory-card", {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out"
+      });
     </script>
-</body>
+  </body>
 </html>
