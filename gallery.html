@@ -3,140 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful: Hamari Yaadein</title>
+    <title>Kashish's Gallery</title>
     <style>
-        body {
-            background-color: #ffe5ec;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        body { background-color: #ffe5ec; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: Arial, sans-serif; overflow: hidden; }
+        
+        /* Floating Balloons 🎈 (Consistency ke liye) */
+        .balloon { position: absolute; bottom: -100px; width: 30px; height: 40px; border-radius: 50%; animation: floatUp 8s infinite linear; opacity: 0.5; z-index: -1; }
+        @keyframes floatUp { from { transform: translateY(0); } to { transform: translateY(-120vh); } }
 
-        h1 {
-            color: #ff4d6d;
-            margin: 20px 0;
-            z-index: 10;
-        }
-
-        .gallery-wrapper {
-            position: relative;
-            width: 100vw;
-            height: 60vh; 
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .slides {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100vw;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide img {
-            max-width: 100%;
-            max-height: 85%;
-            object-fit: contain;
-        }
-
-        .btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 77, 109, 0.7);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            border-radius: 50%;
-            z-index: 20;
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        /* Naya Message Button Styling 📩 */
-        .msg-link {
-            margin: 30px 0;
-            padding: 15px 40px;
-            background-color: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
-            transition: transform 0.3s;
-            z-index: 10;
-        }
-        .msg-link:hover {
-            transform: scale(1.1);
-        }
-
-        .balloon {
-            position: absolute;
-            bottom: -100px;
-            width: 40px;
-            height: 60px;
-            background: #ff8fa3;
-            border-radius: 50%;
-            animation: float 8s infinite linear;
-            z-index: 1;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-120vh); opacity: 0; }
-        }
+        .gallery-container { text-align: center; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
+        
+        /* Badi Photo 🖼️ */
+        #mainPhoto { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; border: 4px solid #ff4d6d; transition: 0.5s ease; }
+        
+        .nav-btn { margin-top: 20px; padding: 15px 35px; font-size: 20px; border: none; border-radius: 30px; background: #ff4d6d; color: white; cursor: pointer; font-weight: bold; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
     </style>
 </head>
 <body>
 
-    <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="balloon" style="left: 80%; animation-delay: 3s; background: #ff4d6d;"></div>
-
-    <h1>Beautiful: Hamari Yaadein ❤️</h1>
-
-    <div class="gallery-wrapper">
-        <button class="btn prev" onclick="changeSlide(-1)">❮</button>
-        <button class="btn next" onclick="changeSlide(1)">❯</button>
-        
-        <div class="slides" id="image-slider">
-            <div class="slide"><img src="Photo1.jpg"><p>Yaad 1 ✨</p></div>
-            <div class="slide"><img src="Photo2.jpg"><p>Yaad 2 🌹</p></div>
-            <div class="slide"><img src="Photo3.jpg"><p>Yaad 3 💖</p></div>
-            <div class="slide"><img src="Photo4.jpg"><p>Yaad 4 🔒</p></div>
-            <div class="slide"><img src="Photo5.jpg"><p>Yaad 5 🌸</p></div>
-            <div class="slide"><img src="Photo6.jpg"><p>Yaad 6 🌟</p></div>
-            <div class="slide"><img src="Photo7.jpg"><p>Yaad 7 🎈</p></div>
-            <div class="slide"><img src="Photo8.jpg"><p>Yaad 8 💎</p></div>
-            <div class="slide"><img src="Photo9.jpg"><p>Yaad 9 ❤️</p></div>
-            <div class="slide"><img src="Photo10.jpg"><p>Hamari Best Memory! 👑</p></div>
-        </div>
+    <div class="gallery-container">
+        <img id="mainPhoto" src="Photo1.jpg" alt="Memory">
+        <button class="nav-btn" id="actionBtn" onclick="nextImage()">Next Photo ➡️</button>
     </div>
 
-    <a href="message.html" class="msg-link">Read My Message ❤️</a>
+    <audio id="bgMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        let index = 0;
-        function changeSlide(n) {
-            const slides = document.getElementById('image-slider');
-            index = (index + n + 10) % 10;
-            slides.style.transform = `translateX(-${index * 100}vw)`;
+        let currentPhoto = 1;
+        const totalPhotos = 10;
+        const photoImg = document.getElementById("mainPhoto");
+        const btn = document.getElementById("actionBtn");
+        const music = document.getElementById("bgMusic");
+
+        // Music setup
+        window.onload = () => {
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
+                music.play().catch(e => console.log("Interaction needed"));
+            }
+        };
+
+        function nextImage() {
+            if (currentPhoto < totalPhotos) {
+                currentPhoto++;
+                photoImg.style.opacity = 0; // Fade effect start
+                
+                setTimeout(() => {
+                    photoImg.src = `Photo${currentPhoto}.jpg`;
+                    photoImg.style.opacity = 1; // Fade effect end
+                    
+                    // Agar ye last photo hai
+                    if (currentPhoto === totalPhotos) {
+                        btn.innerHTML = "Surprise ✨";
+                        btn.style.background = "#ff0055";
+                    }
+                }, 300);
+            } else {
+                // Surprise button click hone par message page par jao
+                window.location.href = "message.html";
+            }
+        }
+
+        // Background Balloons
+        for(let i=0; i<10; i++) {
+            let b = document.createElement('div');
+            b.className = 'balloon';
+            b.style.left = Math.random() * 100 + 'vw';
+            b.style.backgroundColor = ['#ffadad', '#ffd6a5', '#fdffb6'].at(Math.random()*3);
+            b.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(b);
         }
     </script>
-
 </body>
 </html>
