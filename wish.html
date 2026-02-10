@@ -1,35 +1,51 @@
-<audio id="bgMusic" loop>
-    <source src="background.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-    const music = document.getElementById("bgMusic");
-
-    // 2. Resume Logic: Jaise hi page khulega, ye music ko pichle time se start karega
-    window.onload = () => {
-        const savedTime = localStorage.getItem('musicTime');
-        if (savedTime) {
-            music.currentTime = parseFloat(savedTime);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Wish!</title>
+    <style>
+        body { background-color: #ffe5ec; text-align: center; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .wish-container { animation: zoomIn 1s ease-out; }
+        h1 { color: #ff4d6d; font-size: 3rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; color: #555; }
+        .party-btn { 
+            padding: 15px 40px; font-size: 22px; cursor: pointer; 
+            background-color: #ff4d6d; color: white; border: none; 
+            border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-weight: bold; margin-top: 30px; transition: 0.3s;
         }
+        .party-btn:hover { background-color: #ff1a4d; transform: scale(1.05); }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div class="wish-container">
+        <h1>It's Your Day! 🌟</h1>
+        <p>Tayyar ho ek bade surprise ke liye?</p>
         
-        // Agar music on tha, toh apne aap chalne lagega
-        if (localStorage.getItem('isMusicPlaying') === 'true') {
-            music.play().catch(e => console.log("Music ke liye screen par touch karein"));
+        <button class="party-btn" onclick="goToCake()">Let's Party! 🎉</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+
+        // Page load hote hi music check karo
+        window.onload = function() {
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
+                music.play().catch(e => console.log("Interaction needed"));
+            }
+        };
+
+        function goToCake() {
+            // Cake page par move karo
+            window.location.href = "cake.html";
         }
-    };
-
-    // 3. Time Saver: Har 1 second mein memory mein time save karta rahega
-    setInterval(() => {
-        if (!music.paused) {
-            localStorage.setItem('musicTime', music.currentTime);
-        }
-    }, 1000);
-
-    // 4. Button Function: Jab aap button click karenge, ye agle page par bhej dega
-    function goToCakePage() {
-        localStorage.setItem('musicTime', music.currentTime); // Agle page ke liye time save kiya
-        window.location.href = "cake.html";
-    }
-</script>
-
-<button onclick="goToCakePage()">Let's Party 🎉</button>
+    </script>
+</body>
+</html>
