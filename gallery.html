@@ -3,110 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Lane - Kashish</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <title>Our Beautiful Memories</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: 'Comic Sans MS', cursive; 
+            color: white; 
+            overflow: hidden; 
+        }
+        
+        .slideshow-container { 
+            position: relative; 
+            width: 90%; 
+            max-width: 450px; 
+            height: 75vh; 
+            border: 8px solid #fff; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
+        }
+        
+        .mySlides { display: none; width: 100%; height: 100%; }
+        .mySlides img { width: 100%; height: 100%; object-fit: cover; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-
-        body {
-            background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            text-align: center;
+        .caption { 
+            position: absolute; 
+            bottom: 30px; 
+            width: 100%; 
+            text-align: center; 
+            background: rgba(0, 0, 0, 0.6); 
+            padding: 15px; 
+            font-size: 20px; 
+            color: #ffdae0;
+            border-top: 2px solid #ff1493;
         }
 
-        .header { padding: 40px 20px; }
-        .header h1 { 
-            font-family: 'Pacifico', cursive; 
-            color: #ff4d6d; 
-            font-size: 2.8rem; 
-            text-shadow: 2px 2px white; 
-        }
-
-        .gallery-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .memory-card {
-            background: white;
-            padding: 10px 10px 35px 10px;
-            border-radius: 5px;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
-            max-width: 280px;
-            position: relative;
-            transform: rotate(-2deg); /* Polaroid look */
-        }
-
-        .memory-card:nth-child(even) { transform: rotate(2deg); }
-
-        .memory-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border: 1px solid #eee;
-        }
-
-        .caption {
-            font-family: 'Pacifico', cursive;
-            color: #ff4d6d;
-            margin-top: 15px;
-            font-size: 1.1rem;
-        }
-
-        .nav-buttons { margin: 50px 0; }
-        .btn {
-            padding: 12px 30px;
-            background: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
-        }
+        h1 { margin-bottom: 15px; color: #ff1493; font-size: 28px; text-shadow: 2px 2px 10px rgba(255,255,255,0.3); }
+        
+        /* Smooth Fade Animation */
+        .fade { animation: fadeEffect 2s; }
+        @keyframes fadeEffect { from {opacity: 0.4} to {opacity: 1} }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Our Memory Lane ❤️</h1>
-        <p>Kashish, humari har ek photo ek pyaari kahani hai...</p>
-    </div>
+    <h1>For My Queen ❤️</h1>
 
-    <div class="gallery-container">
-        <div class="memory-card"><img src="Photo1.jpg"><p class="caption">Memory #1</p></div>
-        <div class="memory-card"><img src="Photo2.jpg"><p class="caption">Memory #2</p></div>
-        <div class="memory-card"><img src="Photo3.jpg"><p class="caption">Memory #3</p></div>
-        <div class="memory-card"><img src="Photo4.jpg"><p class="caption">Memory #4</p></div>
-        <div class="memory-card"><img src="Photo5.jpg"><p class="caption">Memory #5</p></div>
-        <div class="memory-card"><img src="Photo6.jpg"><p class="caption">Memory #6</p></div>
-        <div class="memory-card"><img src="Photo7.jpg"><p class="caption">Memory #7</p></div>
-        <div class="memory-card"><img src="Photo8.jpg"><p class="caption">Memory #8</p></div>
-        <div class="memory-card"><img src="Photo9.jpg"><p class="caption">Memory #9</p></div>
-        <div class="memory-card"><img src="Photo10.jpg"><p class="caption">Memory #10</p></div>
-    </div>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="photo1.jpg">
+            <div class="caption">The Best Day! ✨</div>
+        </div>
 
-    <div class="nav-buttons">
-        <a href="index.html" class="btn">🏠 Home</a>
-        <a href="wish.html" class="btn">Next Surprise 🎁</a>
-    </div>
+        <div class="mySlides fade">
+            <img src="photo2.jpg">
+            <div class="caption">Always Together ❤️</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="photo3.jpg">
+            <div class="caption">My Happiness 💖</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="photo4.jpg">
+            <div class="caption">Love You Forever 🌹</div>
+        </div>
+
+        </div>
 
     <script>
-        // Cards load hote waqt animation
-        gsap.from(".memory-card", {
-            duration: 1.2,
-            y: 60,
-            opacity: 0,
-            stagger: 0.2,
-            ease: "power3.out"
-        });
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            
+            // Har 3 second baad photo badlegi
+            setTimeout(showSlides, 3000); 
+        }
     </script>
 </body>
 </html>
