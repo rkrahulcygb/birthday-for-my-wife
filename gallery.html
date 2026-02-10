@@ -4,13 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beautiful: Hamari Yaadein</title>
-    </head>
-<body style="background-color: #ffe5ec; text-align: center;">
+    <style>
+        body {
+            background-color: #ffe5ec; /* Light Pink Background */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    <h1 style="font-family: 'Pacifico', cursive; color: #ff4d6d; margin-top: 50px;">
-        Beautiful: Hamari Yaadein ❤️
-    </h1>
+        h1 {
+            color: #ff4d6d;
+            margin-top: 30px;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
 
-    </body>
+        /* Balloon Animation */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: #ff758f;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 10s infinite linear;
+            z-index: 1;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        }
+
+        /* Gallery Container */
+        .gallery-container {
+            width: 90%;
+            max-width: 400px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 8px solid white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: white;
+            z-index: 5;
+        }
+
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .memory-card {
+            min-width: 100%;
+            text-align: center;
+        }
+
+        .memory-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .caption {
+            padding: 15px;
+            color: #ff4d6d;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="balloon" style="left: 10%; animation-delay: 0s; background: #ff8fa3;"></div>
+    <div class="balloon" style="left: 30%; animation-delay: 2s; background: #ffb3c1;"></div>
+    <div class="balloon" style="left: 50%; animation-delay: 4s; background: #ff4d6d;"></div>
+    <div class="balloon" style="left: 70%; animation-delay: 1s; background: #ff758f;"></div>
+    <div class="balloon" style="left: 90%; animation-delay: 5s; background: #c9184a;"></div>
+
+    <h1>Beautiful: Hamari Yaadein ❤️</h1>
+
+    <div class="gallery-container">
+        <div class="slides-wrapper" id="auto-slides">
+            <div class="memory-card"><img src="Photo1.jpg"><p class="caption">Yaad 1 ✨</p></div>
+            <div class="memory-card"><img src="Photo2.jpg"><p class="caption">Yaad 2 🌹</p></div>
+            <div class="memory-card"><img src="Photo3.jpg"><p class="caption">Yaad 3 💖</p></div>
+            <div class="memory-card"><img src="Photo4.jpg"><p class="caption">Yaad 4 🔒</p></div>
+            <div class="memory-card"><img src="Photo5.jpg"><p class="caption">Yaad 5 🌸</p></div>
+            <div class="memory-card"><img src="Photo6.jpg"><p class="caption">Yaad 6 🌟</p></div>
+            <div class="memory-card"><img src="Photo7.jpg"><p class="caption">Yaad 7 🎈</p></div>
+            <div class="memory-card"><img src="Photo8.jpg"><p class="caption">Yaad 8 💎</p></div>
+            <div class="memory-card"><img src="Photo9.jpg"><p class="caption">Yaad 9 ❤️</p></div>
+            <div class="memory-card"><img src="Photo10.jpg"><p class="caption">Hamari Best Memory! 👑</p></div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.getElementById('auto-slides');
+        const totalSlides = 10;
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Har 3 second mein auto change
+        setInterval(nextSlide, 3000);
+    </script>
+
+</body>
 </html>
-
