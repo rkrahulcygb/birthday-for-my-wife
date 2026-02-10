@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise | Step 1</title>
+    <title>Birthday Surprise</title>
     <style>
-        /* Basic Styling */
-        body { background-color: #ffe5ec; text-align: center; font-family: Arial, sans-serif; overflow: hidden; }
-        .container { margin-top: 100px; }
-        .start-btn { 
-            padding: 20px 40px; font-size: 24px; cursor: pointer; 
-            background-color: #ff4d6d; color: white; border: none; 
-            border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        /* Cake/Decorations ke liye purana CSS yahan rahega */
+        body { background-color: #ffe5ec; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .heart-wrapper { cursor: pointer; animation: float 2s infinite ease-in-out; text-align: center; position: relative; }
+        .heart { background-color: #ff0000; display: inline-block; height: 100px; position: relative; transform: rotate(-45deg); width: 100px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .heart:before, .heart:after { background-color: #ff0000; border-radius: 50%; content: ""; height: 100px; position: absolute; width: 100px; }
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { left: 50px; top: 0; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        p { font-family: Arial; font-weight: bold; color: white; position: absolute; top: 35px; left: 15px; transform: rotate(45deg); margin: 0; z-index: 10; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Hey Kashish Ji! ✨</h1>
-        <p>Aapke liye ek chota sa surprise hai...</p>
-        
-        <button class="start-btn" onclick="startEverything()">Start Surprise 🎁</button>
+    <div class="heart-wrapper" onclick="startSurprise()">
+        <div class="heart"></div>
+        <p>Open Me</p>
     </div>
 
     <audio id="bgMusic" loop>
@@ -30,20 +27,14 @@
     </audio>
 
     <script>
-        function startEverything() {
+        function startSurprise() {
             const music = document.getElementById("bgMusic");
-            
-            // 1. Music play karo
             music.play();
-
-            // 2. Browser ki memory mein save karo ki music "ON" hai
             localStorage.setItem('isMusicPlaying', 'true');
-
-            // 3. Agle page par bhejo (message.html)
-            // Thoda delay taaki music shuru hone ka ehsas ho
-            setTimeout(function() {
-                window.location.href = "message.html";
-            }, 1000); 
+            
+            setTimeout(() => {
+                window.location.href = "wish.html";
+            }, 800);
         }
     </script>
 </body>
