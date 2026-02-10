@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Surprise - Welcome</title>
     <style>
-        body { background: linear-gradient(135deg, #ffcce6, #c4e0ff); height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Arial', sans-serif; margin: 0; }
-        .login-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 85%; max-width: 350px; }
-        h2 { color: #ff3366; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #ffcce6; border-radius: 10px; outline: none; box-sizing: border-box; }
-        button { background: #ff3366; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%; }
+        body { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Comic Sans MS', cursive; margin: 0; }
+        .box { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 85%; max-width: 350px; }
+        h2 { color: #ff3366; }
+        input { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ffcce6; border-radius: 10px; box-sizing: border-box; }
+        button { background: #ff3366; color: white; border: none; padding: 12px; border-radius: 25px; cursor: pointer; width: 100%; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="login-box">
-        <h2>Enter Password ❤️</h2>
-        <input type="password" id="passInput" placeholder="Kashish ka nickname...">
-        <button onclick="checkPass()">Unlock Surprise ✨</button>
+    <div class="box">
+        <h2>Kashish, Enter Password ❤️</h2>
+        <input type="password" id="pass" placeholder="Password yahan likho...">
+        <button onclick="login()">Unlock Surprise ✨</button>
     </div>
-
     <script>
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            // Password 'RK Kashish' rakha hai
-            if (pass === "RK Kashish") {
-                window.location.href = "cake.html"; 
+        function login() {
+            const p = document.getElementById('pass').value;
+            if (p === "RK Kashish") {
+                window.location.href = "wish.html"; // Agla page wish.html hai
             } else {
-                alert("Wrong Password! Try again.");
+                alert("Wrong Password! Hint: RK Kashish");
             }
         }
     </script>
