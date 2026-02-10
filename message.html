@@ -6,109 +6,29 @@
     <title>Mere Dil Ki Baat</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #ffe5ec;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Great Vibes', cursive;
-        }
-
-        .heart-wrapper {
-            cursor: pointer;
-            animation: float 2s infinite ease-in-out;
-            z-index: 10;
-            text-align: center;
-        }
-
-        .heart {
-            background-color: #ff0000;
-            display: inline-block;
-            height: 100px;
-            position: relative;
-            transform: rotate(-45deg);
-            width: 100px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .heart:before, .heart:after {
-            background-color: #ff0000;
-            border-radius: 50%;
-            content: "";
-            height: 100px;
-            position: absolute;
-            width: 100px;
-        }
-
+        body { background-color: #ffe5ec; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: 'Great Vibes', cursive; }
+        .heart-wrapper { cursor: pointer; animation: float 2s infinite ease-in-out; z-index: 10; text-align: center; position: relative; }
+        .heart { background-color: #ff0000; display: inline-block; height: 100px; position: relative; transform: rotate(-45deg); width: 100px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .heart:before, .heart:after { background-color: #ff0000; border-radius: 50%; content: ""; height: 100px; position: absolute; width: 100px; }
         .heart:before { top: -50px; left: 0; }
         .heart:after { left: 50px; top: 0; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .letter-container {
-            display: none;
-            background: #fff9f0;
-            width: 85%;
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            text-align: center;
-            border: 2px solid #f3e5ab;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-
-        .letter-text {
-            font-size: 24px;
-            color: #333;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            margin-bottom: 20px;
-        }
-
-        .video-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
-            transition: 0.3s;
-            font-family: Arial, sans-serif;
-        }
-
-        .video-btn:hover {
-            transform: scale(1.1);
-            background-color: #ff758f;
-        }
-
-        .open-animation {
-            display: block !important;
-            animation: fadeIn 1.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .letter-container { display: none; background: #fff9f0; width: 85%; max-width: 600px; padding: 30px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center; border: 2px solid #f3e5ab; max-height: 85vh; overflow-y: auto; }
+        .letter-text { font-size: 26px; color: #333; line-height: 1.4; white-space: pre-wrap; margin-bottom: 20px; }
+        .video-btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background-color: #ff4d6d; color: white; border: none; font-size: 20px; border-radius: 30px; font-weight: bold; font-family: Arial; cursor: pointer; text-decoration: none; }
+        .open-animation { display: block !important; animation: fadeIn 1.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
 
+    <audio id="bgMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="heart-wrapper" id="heartBtn" onclick="openLetter()">
         <div class="heart"></div>
-        <p style="font-family: Arial; font-weight: bold; color: white; position: absolute; top: 35px; left: 15px; transform: rotate(45deg);">Open Me</p>
+        <p style="font-family: Arial; font-weight: bold; color: white; position: absolute; top: 35px; left: 15px; transform: rotate(45deg); margin: 0;">Open Me</p>
     </div>
 
     <div class="letter-container" id="myLetter">
@@ -117,20 +37,30 @@ Happy birthday meri jaan pyari Kashish Ji! 🎂
 
 Main tumse bahut zyada pyar karta hoon. Main hamesha tumhare saath rahunga puri life, kabhi tumhara saath nahi chhodunga. Main aakhri saans tak tumhare saath rahunga, puri life kabhi akele nahi chhodunga. Jab tak main tumhare saath hoon, tumhe kuch nahi hone dunga. Hum hamesha Happy rahenge.
 
-I promise to stay by your side for the rest of my life. I will never leave you, and I will be with you until my very last breath. As long as I am here, I will protect you and ensure that nothing ever happens to you. We will always be happy together, and I vow to never let you feel alone. 
-
 I Love You. ❤️
         </div>
-        
-        <a href="video.html" class="video-btn">Watch Our Special Video 🎁</a>
+        <button onclick="goToVideo()" class="video-btn">Let's Party! 🎉</button>
     </div>
 
     <script>
+        const music = document.getElementById("bgMusic");
+
+        // Page load hote hi music resume karega
+        window.onload = function() {
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
+                music.play().catch(e => console.log("Click to play"));
+            }
+        };
+
         function openLetter() {
+            music.play();
             document.getElementById('heartBtn').style.display = 'none';
             document.getElementById('myLetter').classList.add('open-animation');
         }
-    </script>
 
+        function goToVideo() {
+            window.location.href = "video.html";
+        }
+    </script>
 </body>
 </html>
