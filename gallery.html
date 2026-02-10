@@ -6,7 +6,7 @@
     <title>Beautiful: Hamari Yaadein</title>
     <style>
         body {
-            background-color: #ffe5ec; /* Pink Background */
+            background-color: #ffe5ec;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -22,11 +22,10 @@
             z-index: 10;
         }
 
-        /* Full Screen Gallery Container */
         .gallery-wrapper {
             position: relative;
             width: 100vw;
-            height: 70vh; /* Photos ki unchai */
+            height: 60vh; 
             overflow: hidden;
             background: white;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -50,10 +49,9 @@
         .slide img {
             max-width: 100%;
             max-height: 85%;
-            object-fit: contain; /* Photo puri dikhegi */
+            object-fit: contain;
         }
 
-        /* Buttons Styling */
         .btn {
             position: absolute;
             top: 50%;
@@ -70,7 +68,24 @@
         .prev { left: 10px; }
         .next { right: 10px; }
 
-        /* Floating Balloons Animation */
+        /* Naya Message Button Styling 📩 */
+        .msg-link {
+            margin: 30px 0;
+            padding: 15px 40px;
+            background-color: #ff4d6d;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.3s;
+            z-index: 10;
+        }
+        .msg-link:hover {
+            transform: scale(1.1);
+        }
+
         .balloon {
             position: absolute;
             bottom: -100px;
@@ -89,9 +104,8 @@
 </head>
 <body>
 
-    <div class="balloon" style="left: 15%; animation-delay: 0s;"></div>
-    <div class="balloon" style="left: 45%; animation-delay: 2s; background: #ff4d6d;"></div>
-    <div class="balloon" style="left: 75%; animation-delay: 4s;"></div>
+    <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 3s; background: #ff4d6d;"></div>
 
     <h1>Beautiful: Hamari Yaadein ❤️</h1>
 
@@ -113,11 +127,13 @@
         </div>
     </div>
 
+    <a href="message.html" class="msg-link">Read My Message ❤️</a>
+
     <script>
         let index = 0;
         function changeSlide(n) {
             const slides = document.getElementById('image-slider');
-            index = (index + n + 10) % 10; // 10 photos ke liye loop
+            index = (index + n + 10) % 10;
             slides.style.transform = `translateX(-${index * 100}vw)`;
         }
     </script>
