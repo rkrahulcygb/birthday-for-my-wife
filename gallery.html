@@ -1,126 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memory Lane - Birthday Memories</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      .header {
-        text-align: center;
-        padding: 50px 20px;
-      }
-
-      .header h1 {
-        font-family: "Pacifico", cursive;
-        color: #ff1493;
-        font-size: 3.5rem;
-        text-shadow: 3px 3px 0px rgba(255, 255, 255, 1);
-      }
-
-      .gallery-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .memory-card {
-        background: white;
-        padding: 15px 15px 40px 15px;
-        box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
-        transform: rotate(var(--r));
-        transition: 0.3s;
-        width: 280px;
-        position: relative;
-      }
-
-      .memory-card:hover {
-        transform: rotate(0deg) scale(1.1);
-        z-index: 10;
-      }
-
-      .photo {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border: 1px solid #eee;
-      }
-
-      .caption {
-        font-family: "Pacifico", cursive;
-        text-align: center;
-        margin-top: 15px;
-        color: #555;
-        font-size: 1.2rem;
-      }
-
-      /* Sticker effects */
-      .sticker {
-        position: absolute;
-        font-size: 2rem;
-        z-index: 2;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="header">
-      <h1>Our Memory Lane ❤️</h1>
-    </div>
-
-    <div class="gallery-container">
-      <div class="memory-card" style="--r: -3deg">
-        <span class="sticker" style="top: -10px; left: -10px">📍</span>
-        <img src="photo1.jpg" class="photo" alt="Memory 1" />
-        <p class="caption">The Beginning ✨</p>
-      </div>
-
-      <div class="memory-card" style="--r: 2deg">
-        <span class="sticker" style="top: -10px; right: -10px">❤️</span>
-        <img src="photo2.jpg" class="photo" alt="Memory 2" />
-        <p class="caption">Special Moment 🌹</p>
-      </div>
-
-      <div class="memory-card" style="--r: -2deg">
-        <span class="sticker" style="bottom: 20px; left: -10px">✨</span>
-        <img src="photo3.jpg" class="photo" alt="Memory 3" />
-        <p class="caption">Pure Happiness 💖</p>
-      </div>
-
-      <div class="memory-card" style="--r: 4deg">
-        <span class="sticker" style="top: 10px; left: 50%">🌟</span>
-        <img src="photo4.jpg" class="photo" alt="Memory 4" />
-        <p class="caption">Forever Us 🔒</p>
-      </div>
-    </div>
-
+    <title>Memory Lane - Kashish</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap");
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: linear-gradient(135deg, #ffcee6 0%, #ffd6f1 50%, #e4f9ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .header { text-align: center; padding: 50px 20px; z-index: 10; position: relative; }
+        .header h1 {
+            font-family: "Pacifico", cursive;
+            color: #ff1493;
+            font-size: 3.5rem;
+            text-shadow: 3px 3px 0px white;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Scrapbook Card Style */
+        .memory-card {
+            background: white;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+            width: 260px;
+            transition: 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Random rotation for that real scrapbook look */
+        .memory-card:nth-child(4n+1) { transform: rotate(-3deg); }
+        .memory-card:nth-child(4n+2) { transform: rotate(2deg); }
+        .memory-card:nth-child(4n+3) { transform: rotate(-1.5deg); }
+        .memory-card:nth-child(4n+4) { transform: rotate(3deg); }
+
+        .memory-card:hover {
+            transform: rotate(0deg) scale(1.1) !important;
+            z-index: 20;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.5);
+        }
+
+        .photo { width: 100%; height: 260px; object-fit: cover; border: 1px solid #eee; }
+
+        .caption {
+            font-family: "Pacifico", cursive;
+            text-align: center;
+            margin-top: 15px;
+            color: #ff1493;
+            font-size: 1.1rem;
+        }
+
+        .floating { position: fixed; pointer-events: none; z-index: 1; font-size: 2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Kashish ki Yaadein ❤️</h1>
+    </div>
+
+    <div class="gallery-container" id="gallery">
+        <div class="memory-card"><img src="photo1.jpg" class="photo"><p class="caption">Memory 1 ✨</p></div>
+        <div class="memory-card"><img src="photo2.jpg" class="photo"><p class="caption">Memory 2 💖</p></div>
+        <div class="memory-card"><img src="photo3.jpg" class="photo"><p class="caption">Memory 3 🌹</p></div>
+        <div class="memory-card"><img src="photo4.jpg" class="photo"><p class="caption">Memory 4 🔒</p></div>
+        <div class="memory-card"><img src="photo5.jpg" class="photo"><p class="caption">Memory 5 🦋</p></div>
+        <div class="memory-card"><img src="photo6.jpg" class="photo"><p class="caption">Memory 6 🌟</p></div>
+        <div class="memory-card"><img src="photo7.jpg" class="photo"><p class="caption">Memory 7 🌸</p></div>
+        <div class="memory-card"><img src="photo8.jpg" class="photo"><p class="caption">Memory 8 🎈</p></div>
+        <div class="memory-card"><img src="photo9.jpg" class="photo"><p class="caption">Memory 9 💎</p></div>
+        <div class="memory-card"><img src="photo10.jpg" class="photo"><p class="caption">Memory 10 ❤️</p></div>
+    </div>
+
     <script>
-      // Simple Animation
-      gsap.from(".memory-card", {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out"
-      });
+        // Floating Elements Magic
+        const symbols = ['❤️', '✨', '🎈', '🌸', '💖', '🌟', '🍭', '🦋'];
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating';
+            element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.top = '110vh';
+            document.body.appendChild(element);
+
+            gsap.to(element, {
+                y: '-120vh',
+                x: 'random(-100, 100)',
+                rotation: 'random(-360, 360)',
+                duration: Math.random() * 5 + 5,
+                ease: "none",
+                onComplete: () => element.remove()
+            });
+        }
+        setInterval(createFloatingElement, 400);
+
+        // Entrance Animation for Cards
+        gsap.from(".memory-card", {
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+        });
     </script>
-  </body>
+</body>
 </html>
