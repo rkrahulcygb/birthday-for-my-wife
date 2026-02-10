@@ -3,91 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wish - Kashish</title>
+    <title>Happy Birthday My Gurl!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        /* Global Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Arial Rounded MT Bold", Arial, sans-serif; }
-        body { background: linear-gradient(135deg, #ffcce6, #c4e0ff); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-
-        /* Floating Balloons */
-        .balloon { position: absolute; width: 40px; height: 50px; border-radius: 50%; animation: float 15s infinite ease-in-out; z-index: 1; }
-        @keyframes float { 0% { transform: translateY(100vh) translateX(0); opacity: 1; } 100% { transform: translateY(-100px) translateX(50px); opacity: 0; } }
-
-        /* Cake Style */
-        .cake-container { position: relative; width: 300px; height: 300px; margin: 20px auto; z-index: 10; cursor: pointer; }
-        .cake { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 120px; background: linear-gradient(to right, #ff85a2, #ff99b6); border-radius: 10px 10px 0 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
-        .cake:before { content: ""; position: absolute; top: -40px; left: 0; width: 100%; height: 40px; background: linear-gradient(to right, #fc6c85, #ff85a2); border-radius: 10px 10px 0 0; }
-        
-        .candle-container { position: absolute; top: -95px; left: 0; width: 100%; display: flex; justify-content: center; gap: 20px; z-index: 15; }
-        .candle { position: relative; width: 8px; height: 30px; background: linear-gradient(to top, #ffff99, #ff9933); border-radius: 4px; transition: all 0.3s ease; }
-        .flame { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 12px; height: 20px; background: radial-gradient(ellipse at center, #ffff00, #ff9900, #ff6600); border-radius: 50% 50% 20% 20%; box-shadow: 0 0 10px #ff9900; animation: flicker 0.5s infinite alternate; }
-        
-        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); } 100% { transform: translateX(-50%) scale(1.1); } }
-        .candle.blown .flame { opacity: 0; }
-
-        /* Wish Message */
-        .wish-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); background: white; padding: 25px; border-radius: 20px; text-align: center; z-index: 100; opacity: 0; transition: 0.5s; box-shadow: 0 0 30px rgba(255, 51, 102, 0.5); width: 80%; }
-        .wish-message.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-        
-        .nav-buttons { position: fixed; bottom: 30px; display: flex; gap: 20px; z-index: 50; }
-        .btn { padding: 12px 25px; background: #ff4d6d; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; text-decoration: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Sans MS', cursive; }
+        body { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+        .container { text-align: center; z-index: 10; padding: 2rem; background: rgba(255, 255, 255, 0.2); border-radius: 20px; backdrop-filter: blur(5px); }
+        h1 { color: #fff; font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.5); }
+        p { color: #fff; font-size: 1.2rem; margin-bottom: 2rem; }
+        .btn { padding: 15px 40px; font-size: 1.2rem; background: #ff1493; color: white; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 20, 147, 0.6); }
     </style>
 </head>
 <body>
-
-    <iframe src="https://www.youtube.com/embed/Sshz9G_K-U0?autoplay=1&loop=1&playlist=Sshz9G_K-U0" style="display:none" allow="autoplay"></iframe>
-
-    <h1 style="color: #ff3366; margin-bottom: 20px; text-align: center; font-family: 'Pacifico', cursive;">Mombatti bujhao, Kashish! 🎂</h1>
-
-    <div class="cake-container" onclick="blowCandles()">
-        <div class="cake">
-            <div class="candle-container" id="candleContainer">
-                <div class="candle"><div class="flame"></div></div>
-                <div class="candle"><div class="flame"></div></div>
-                <div class="candle"><div class="flame"></div></div>
-                <div class="candle"><div class="flame"></div></div>
-                <div class="candle"><div class="flame"></div></div>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Happy Birthday, Kashish! 💖</h1>
+        <p>You're the most special person in my life. Let's celebrate!</p>
+        <a href="cake.html" class="btn">Let's Start the Party! 🎂</a>
     </div>
-
-    <div class="wish-message" id="wishMessage">
-        <h2 style="color: #ff3366;">✨ Happy Birthday, Kashish! ✨</h2>
-        <p style="margin: 15px 0;">Meri taraf se tumhare liye ek chota sa tohfa. I hope tumhe pasand aaya ho! ❤️</p>
-        <button class="btn" onclick="closeWish()">Love You! ❤️</button>
-    </div>
-
-    <div class="nav-buttons">
-        <a href="gallery.html" class="btn">◀ Photos</a>
-        <a href="index.html" class="btn">Start Again 🏠</a>
-    </div>
-
     <script>
-        function blowCandles() {
-            let candles = document.querySelectorAll('.candle');
-            candles.forEach(c => c.classList.add('blown'));
-            setTimeout(() => {
-                document.getElementById('wishMessage').classList.add('show');
-                createConfetti();
-            }, 500);
+        // Floating Hearts
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            document.body.appendChild(heart);
+            gsap.to(heart, { y: '-110vh', duration: Math.random() * 3 + 2, onComplete: () => heart.remove() });
         }
-
-        function closeWish() {
-            document.getElementById('wishMessage').classList.remove('show');
-        }
-
-        function createBalloons() {
-            for(let i=0; i<15; i++) {
-                let b = document.createElement('div');
-                b.className = 'balloon';
-                b.style.left = Math.random() * 100 + '%';
-                b.style.backgroundColor = ['#ff66b3','#66ccff','#ff9966'][Math.floor(Math.random()*3)];
-                b.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(b);
-            }
-        }
-        createBalloons();
+        setInterval(createHearts, 300);
     </script>
 </body>
 </html>
-
